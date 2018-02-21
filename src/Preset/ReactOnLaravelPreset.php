@@ -68,6 +68,7 @@ class ReactOnLaravelPreset extends Preset
             'prop-types' => '^15.6.0',
             'react' => '^16.2.0',
             'react-dom' => '^16.2.0',
+            'react-on-rails' => '^10.1.1',
             'styled-components' => '^3.1.6',
         ];
 

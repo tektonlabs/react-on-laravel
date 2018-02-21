@@ -32,4 +32,7 @@ if (mix.inProduction()) {
   mix.version();
 } else {
   mix.sourceMaps();
+  mix.browserSync({
+    proxy: process.env.APP_URL,
+  });
 }
