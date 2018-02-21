@@ -1,0 +1,23 @@
+{
+  "presets": [
+    "react",
+    "env",
+    "stage-2"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./"
+        ],
+        "alias": {
+          "img": "./resources/assets/img",
+          "components": "./resources/assets/js/components",
+          "views": "./resources/assets/js/views",
+          "utils": "./resources/assets/js/utils"
+        }
+      }
+    ]
+  ]
+}

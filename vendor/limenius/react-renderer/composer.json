@@ -1,0 +1,42 @@
+{
+    "name": "limenius/react-renderer",
+    "description": "Client and Server-side React rendering",
+    "type": "library",
+    "keywords": ["react", "reactjs", "isomorphic", "twig"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nacho Martin",
+            "email": "nacho@limenius.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Limenius\\ReactRenderer\\": "src/Limenius/ReactRenderer" }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Limemius\\ReactRenderer\\Tests\\": "tests/Limenius/ReactRenderer/Tests"
+        }
+    },
+    "require": {
+        "php": ">=5.5.0",
+        "nacmartin/phpexecjs": "^2.0",
+        "twig/twig": "^1.20|^2.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^2.5",
+        "escapestudios/symfony2-coding-standard": "^2.9",
+        "wimg/php-compatibility": "^7.0"
+    },
+    "scripts": {
+        "default-scripts": [
+            "rm -rf vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHPCompatibility; cp -rp vendor/wimg/php-compatibility vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHPCompatibility"
+        ],
+        "post-install-cmd": [
+            "@default-scripts"
+        ],
+        "post-update-cmd": [
+            "@default-scripts"
+        ]
+    }
+}

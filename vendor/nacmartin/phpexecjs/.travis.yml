@@ -1,0 +1,21 @@
+language: php
+
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+
+php:
+    - 7.0
+    - 7.1
+
+before_install:
+    - composer self-update
+    - if [ "$DEPENDENCIES" = "dev" ]; then perl -pi -e 's/^}$/,"minimum-stability":"dev"}/' composer.json; fi;
+
+install:
+    - composer update $COMPOSER_FLAGS
+
+script:
+    - phpunit

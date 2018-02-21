@@ -1,0 +1,26 @@
+{
+  "name": "tektonlabs/react-on-laravel",
+  "description": "React isomorphic applications with Laravel",
+  "keywords": [
+    "react",
+    "laravel",
+    "ssr"
+  ],
+  "require": {
+    "limenius/react-renderer": "^2.1",
+    "nacmartin/phpexecjs": "^2.0",
+    "laravel/framework": "^5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "TektonLabs\\ReactOnLaravel\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "TektonLabs\\ReactOnLaravel\\ReactOnLaravelServiceProvider"
+      ]
+    }
+  }
+}
