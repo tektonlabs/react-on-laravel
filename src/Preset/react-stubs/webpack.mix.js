@@ -22,7 +22,7 @@ mix.webpackConfig({
         loader: 'eslint-loader',
       },
     ],
-  }
+  },
 });
 
 mix.react('resources/assets/js/app.js', 'public/js')

@@ -34,7 +34,7 @@ class ReactOnLaravelServiceProvider extends ServiceProvider
 
     public function registerPreset()
     {
-        PresetCommand::macro('react-tk', function ($command) {
+        PresetCommand::macro('react-on-laravel', function ($command) {
             ReactOnLaravelPreset::install();
             $command->info('TektonLabs React scaffolding installed successfully.');
             $command->comment('Please run "npm install && npm run dev" to compile your fresh scaffolding.');
