@@ -22,6 +22,7 @@ class ReactOnLaravelServiceProvider extends ServiceProvider
     {
         $this->publishConfig();
         $this->registerPreset();
+        $this->bindReactRenderer();
         $this->registerBladeExtension();
     }
 
@@ -41,7 +42,7 @@ class ReactOnLaravelServiceProvider extends ServiceProvider
         });
     }
 
-    public function registerBladeExtension()
+    public function bindReactRenderer()
     {
         $contextProvider = new ContextProvider(request());
         $renderer = new ReactRenderer($contextProvider);
@@ -49,7 +50,10 @@ class ReactOnLaravelServiceProvider extends ServiceProvider
         $this->app->bind('reactRenderer', function () use ($contextProvider, $renderer){
             return new ReactRenderExtension($renderer, $contextProvider, config('react_on_laravel.default_rendering', 'both'));
         });
+    }
 
+    public function registerBladeExtension()
+    {
         Blade::directive('reactComponent', function ($expression) {
             return "app('reactRenderer')->reactRenderComponent({$expression})";
         });
