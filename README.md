@@ -16,6 +16,7 @@ Features included:
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [Context](#context)
+- [Laravel Mix scripts](#laravel-mix-scripts)
 - [License](#license)
 
 ## Installation
@@ -122,6 +123,16 @@ In the context object you will receive the following parameters:
     search,
 }
 ```
+
+## Laravel Mix scripts
+
+To compile your assets you can use the default Laravel Mix scripts. The aforementioned
+preset provides a `webpack.mix.js` file with configuration for browserSync proxying
+to the `APP_URL` env variable. The only exception is the `hot`, currently we are not
+supporting hot-reloading using webpack-dev-server, it can still be used but it will
+raise an error saying that the string compiled from the server is different than the one
+obtained in the client. Because of this, we recommend using the `watch` script and
+browserSync to get hot-reloading.
 
 ## License
 
