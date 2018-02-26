@@ -22,7 +22,7 @@
         "TektonLabs\\ReactOnLaravel\\ReactOnLaravelServiceProvider"
       ],
       "aliases": {
-        "ReactRenderer": "TektonLabs\\ReactOnLaravel\\Facade\\ReactRenderer"
+        "ReactRenderer": "TektonLabs\\ReactOnLaravel\\Facades\\ReactRenderer"
       }
     }
   }
