@@ -10,12 +10,15 @@ Features included:
 * Blade integration.
 * Integration with Laravel Mix.
 
+Check our example [here](https://github.com/jehupacheco/react-on-laravel-example)
+
 ## Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [Context](#context)
+- [Generator Functions](#generator-functions)
 - [Laravel Mix scripts](#laravel-mix-scripts)
 - [License](#license)
 
@@ -62,10 +65,16 @@ import HelloWorld from './HelloWorld';
 ReactOnRails.register({ HelloWorld });
 ```
 
-Now you can insert the registered React component in your blade template with:
+Now you can insert the registered React component in your blade template with our blade directive:
 
 ```
 {!! @reactComponent('HelloWorld') !!}
+```
+
+or using the facade:
+
+```
+{!! ReactRenderer::reactRenderComponent('HelloWorld') !!}
 ```
 
 and passing props like this:
@@ -123,6 +132,54 @@ In the context object you will receive the following parameters:
     search,
 }
 ```
+
+## Generator Functions
+
+In some cases you may want to do some custom Sever Side Rendering, for example, when
+rendering meta tags with [React Helmet](https://github.com/nfl/react-helmet) on
+rendering the resulting stylesheet from [Styled Components](http://styled-components.com/).
+
+For that cases, you can use generator functions that, instead of returning a React
+Component, can return an object and can freely be registered as the other React Components (using the ReactOnRails package in node).
+
+The returning object should have an attibrute `renderedHtml` containing
+another object with an attribute `componentHtml` including in this level any other attribute you want to render.
+
+For instace, a generator function for rendering components that use Helmet will look
+like:
+
+```js
+export default (initialProps, context) => {
+    const renderedHtml = {
+      componentHtml: renderToString(
+        <MyApp/>
+      ),
+      title: Helmet.renderStatic().title.toString()
+    };
+    return { renderedHtml };
+}
+```
+
+and you can insert the result in your views using our Facade and the `reactRenderComponentArray` method
+
+```
+@extends('base')
+
+@php
+    $app = ReactRenderer::reactRenderComponentArray('HelloWorld');
+@endphp
+
+@section('extra-meta-tags')
+    {!! $app['title'] !!}
+@endsection
+
+@section('content')
+    {!! $app['componentHtml'] !!}
+@endsection
+```
+
+Our [example](https://github.com/jehupacheco/react-on-laravel-example) uses a
+similar approach to include StyledComponents SSR.
 
 ## Laravel Mix scripts
 
