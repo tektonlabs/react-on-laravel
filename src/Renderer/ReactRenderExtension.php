@@ -89,7 +89,7 @@ class ReactRenderExtension
                 $data['trace']
             );
             if ($rendered['hasErrors']) {
-                report(new RenderException($rendered['evaluated']));
+                throw new RenderException($rendered['evaluated']);
                 $str .= $rendered['evaluated'].$rendered['consoleReplay'];
             } else {
                 $evaluated = $rendered['evaluated'];
