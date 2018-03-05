@@ -88,7 +88,7 @@ class ReactRenderer extends AbstractReactRenderer
         $result = json_decode($this->phpExecJs->evalJs($this->wrap($componentName, $propsString, $uuid, $registeredStores, $trace)), true);
         if ($result['hasErrors']) {
             $this->logErrors($result['consoleReplayScript']);
-            $this->throwError($result['consoleReplayScript'], $componentName);
+            $this->throwError($result['html'], $componentName);
         }
         return [
             'evaluated' => $result['html'],
@@ -97,9 +97,9 @@ class ReactRenderer extends AbstractReactRenderer
         ];
     }
 
-    protected function throwError($consoleReplayScript, $componentName)
+    protected function throwError($html, $componentName)
     {
-        throw new RenderException($componentName, $consoleReplayScript);
+        throw new RenderException($componentName, $html);
     }
 
     protected function loadServerBundle()
