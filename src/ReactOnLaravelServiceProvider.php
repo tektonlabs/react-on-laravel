@@ -48,7 +48,7 @@ class ReactOnLaravelServiceProvider extends ServiceProvider
         $renderer = new ReactRenderer($contextProvider);
 
         $this->app->bind('reactRenderer', function () use ($contextProvider, $renderer){
-            return new ReactRenderExtension($renderer, $contextProvider, config('react_on_laravel.default_rendering', 'both'));
+            return new ReactRenderExtension($renderer, $contextProvider, config('react_on_laravel.default_rendering', 'both'), true);
         });
     }
 
