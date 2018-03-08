@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\HtmlString;
 use Illuminate\Foundation\Console\PresetCommand;
-use Limenius\ReactRenderer\Twig\ReactRenderExtension;
+use TektonLabs\ReactOnLaravel\Renderer\ReactRenderExtension;
 use TektonLabs\ReactOnLaravel\Renderer\ReactRenderer;
 use TektonLabs\ReactOnLaravel\Renderer\ContextProvider;
 use TektonLabs\ReactOnLaravel\Preset\ReactOnLaravelPreset;
